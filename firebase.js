@@ -1,23 +1,16 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore }
-    from "firebase/firestore";
+import { getFirestore }  from "firebase/firestore";
 
  // Web app's Firebase configuration
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAF4UlHOduDAfxD1L2UF2oM289iSRgKLH4",
-
-  authDomain: "ai-flashcards-dj.firebaseapp.com",
-
-  projectId: "ai-flashcards-dj",
-
-  storageBucket: "ai-flashcards-dj.appspot.com",
-
-  messagingSenderId: "889402541495",
-
-  appId: "1:889402541495:web:00b581ff4f7970dbfd9432",
-
-  measurementId: "G-M1CFTL6PGJ",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
