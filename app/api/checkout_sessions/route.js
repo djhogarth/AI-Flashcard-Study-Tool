@@ -1,19 +1,21 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2024-08-17",
-});
-
 // Utility function to format the amount for Stripe
 const formatAmountForStripe = (amount, currency) => {
   return Math.round(amount * 100);
 };
 
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+  apiVersion: "2022-11-15",
+});
+
 // POST Request Function
-export async function POST(req) {
+export async function POST(req) {  
+
   try {
     const params = {
+      submit_type: "donate",
       mode: "payment",
       payment_method_types: ["card"],
       line_items: [
@@ -21,8 +23,8 @@ export async function POST(req) {
           price_data: {
             currency: "usd",
             product_data: {
-                name: "Donation",
-                description: "Donations to help support the app"
+              name: "Donation",
+              description: "Donations to help support the app",
             },
             unit_amount: formatAmountForStripe(10, "usd"), // $10.00
           },
